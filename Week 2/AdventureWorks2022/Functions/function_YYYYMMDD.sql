@@ -1,0 +1,9 @@
+CREATE FUNCTION dbo.fn_GetDateYYYYMMDD (@DateInput DATETIME)
+RETURNS VARCHAR(8)
+AS
+BEGIN
+    RETURN 
+        CONVERT(VARCHAR(4), YEAR(@DateInput)) +
+        RIGHT('0' + CONVERT(VARCHAR(2), MONTH(@DateInput)), 2) +
+        RIGHT('0' + CONVERT(VARCHAR(2), DAY(@DateInput)), 2)
+END
